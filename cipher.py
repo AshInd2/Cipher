@@ -26,7 +26,7 @@ def rail_fence_encode(string, key):
         rail fence algorithm
     """
     l_r = []
-    for i in range(key):
+    while key > len(l_r):
         l_r.append("")
 
     w = 0
@@ -34,11 +34,14 @@ def rail_fence_encode(string, key):
     for j in string:
         l_r[w] = j + l_r[w]
         w = e + w
-        if w == key - 1 or w == 0:
-            e = -1 * e
+
+        if w == key - 1:
+            e = -1
+        elif w == 0:
+            e = 1
     u = ""
-    for q in range(key):
-        u = l_r[q] + u
+    for q in l_r:
+        u = q + u
     return u
 
 
