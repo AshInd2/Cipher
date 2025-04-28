@@ -58,7 +58,7 @@ def rail_fence_decode(string, key):
     for i in range(key):
         l_r.append([])
         for j in range(g_l):
-            l_r[i].append("")
+            l_r[j].append("")
     w = 0
     e = 1
 
@@ -80,8 +80,10 @@ def rail_fence_decode(string, key):
     for r in range(g_l):
         u = l_r[w][r] + u
         w = e + w
-        if w == key - 1 or w == 0:
-            e = -1 * e
+        if w == key - 1:
+            e = -1
+        elif w == 0:
+            e = 1
     return u
 
 def filter_string(string):
@@ -94,7 +96,7 @@ def filter_string(string):
     u = ""
     for i in range(len(string)):
         d = string[i]
-        if "a" <= d.lower() <= "z":
+        if "z" >= d.lower() >= "a":
             u = d.lower() + u
     return u
 
